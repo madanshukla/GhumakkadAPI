@@ -28,5 +28,48 @@ namespace GhumakkadAPI.Service
              
             return res;
          }
+
+         public async Task<IEnumerable< Article>> GetArticlesByUserId(int userId)
+         {
+            var res= await  _ghumakkadContext.Articles.Where(x=>x.CreatedBy==userId).ToListAsync();
+             
+            return res;
+         }
+
+          public async  Task<int> DeleteArticle(int id)
+          {
+            Article article= await _ghumakkadContext.Articles.FirstOrDefaultAsync(x=>x.ArticleId==id);
+             _ghumakkadContext.Articles.Remove(article);
+             var res=await _ghumakkadContext.SaveChangesAsync();
+           return res;
+          }
+              
+
+              public async  Task<int> DisableArticleByArticleId(int id)
+          {
+            Article article= await _ghumakkadContext.Articles.FirstOrDefaultAsync(x=>x.ArticleId==id);
+            if(article!=null)
+            {
+                article.IsActive=0;
+             _ghumakkadContext.Articles.Update(article);
+             var res=await _ghumakkadContext.SaveChangesAsync();
+           return res;
+            }
+             return 0;
+           
+          }
+
+             public async  Task<int> EnableArticleByArticleId(int id)
+          {
+            Article article= await _ghumakkadContext.Articles.FirstOrDefaultAsync(x=>x.ArticleId==id);
+             if(article!=null)
+            {
+             article.IsActive=1;
+             _ghumakkadContext.Articles.Update(article);
+             var res=await _ghumakkadContext.SaveChangesAsync();
+           return res;
+            }
+            return 0;
+          }
     }
 }

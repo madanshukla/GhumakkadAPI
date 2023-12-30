@@ -32,6 +32,15 @@ namespace GhumakkadAPI.Manager
             return await _articleService.GetArticles(id);
           }
 
+public async Task<IEnumerable< Article>> GetArticlesByUserId(int userId)
+{
+return await _articleService.GetArticlesByUserId(userId);
+}
+
+public async  Task<int> DeleteArticle(int id)
+{
+  return await _articleService.DeleteArticle(id);
+}
           private Article MapArticle(ArticleEntity articleEntity)
           {
             return new Article()
@@ -46,5 +55,15 @@ namespace GhumakkadAPI.Manager
                       UpdatedDate=articleEntity.UpdatedDate
             };
           }
+
+        public async Task<int> DisableArticleByArticleId(int id)
+        {
+           return await _articleService.DisableArticleByArticleId(id);
+        }
+
+        public async Task<int> EnableArticleByArticleId(int id)
+        {
+            return await _articleService.EnableArticleByArticleId(id);
+        }
     }
 }

@@ -12,5 +12,13 @@ namespace GhumakkadAPI.Manager
           Task<int> PostArticles(ArticleEntity article);
 
            Task<Article> GetArticles(int id);
+
+           Task<IEnumerable< Article>> GetArticlesByUserId(int userId);
+
+           Task<int> DeleteArticle(int id);
+
+            Task<int> DisableArticleByArticleId(int id);
+
+              Task<int> EnableArticleByArticleId(int id);
     }
 }
