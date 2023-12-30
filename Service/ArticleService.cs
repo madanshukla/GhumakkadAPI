@@ -48,14 +48,15 @@ namespace GhumakkadAPI.Service
               public async  Task<int> DisableArticleByArticleId(int id)
           {
             Article article= await _ghumakkadContext.Articles.FirstOrDefaultAsync(x=>x.ArticleId==id);
-            if(article!=null)
-            {
-                article.IsActive=0;
-            // _ghumakkadContext.Articles.Update(article);
+             if(article!=null)
+            { article.IsActive=0;
+                 _ghumakkadContext.Attach(article);
+            _ghumakkadContext.Entry(article).Property(p => p.IsActive).IsModified = true;
+            
              var res=await _ghumakkadContext.SaveChangesAsync();
            return res;
             }
-             return 0;
+            return 0;
            
           }
 
@@ -63,9 +64,10 @@ namespace GhumakkadAPI.Service
           {
             Article article= await _ghumakkadContext.Articles.FirstOrDefaultAsync(x=>x.ArticleId==id);
              if(article!=null)
-            {
-             article.IsActive=1;
-            // _ghumakkadContext.Articles.Update(article);
+            { article.IsActive=1;
+                 _ghumakkadContext.Attach(article);
+            _ghumakkadContext.Entry(article).Property(p => p.IsActive).IsModified = true;
+            
              var res=await _ghumakkadContext.SaveChangesAsync();
            return res;
             }
