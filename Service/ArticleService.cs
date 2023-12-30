@@ -51,7 +51,7 @@ namespace GhumakkadAPI.Service
             if(article!=null)
             {
                 article.IsActive=0;
-             _ghumakkadContext.Articles.Update(article);
+            // _ghumakkadContext.Articles.Update(article);
              var res=await _ghumakkadContext.SaveChangesAsync();
            return res;
             }
@@ -65,7 +65,7 @@ namespace GhumakkadAPI.Service
              if(article!=null)
             {
              article.IsActive=1;
-             _ghumakkadContext.Articles.Update(article);
+            // _ghumakkadContext.Articles.Update(article);
              var res=await _ghumakkadContext.SaveChangesAsync();
            return res;
             }
