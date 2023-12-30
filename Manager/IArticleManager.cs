@@ -20,5 +20,7 @@ namespace GhumakkadAPI.Manager
             Task<int> DisableArticleByArticleId(int id);
 
               Task<int> EnableArticleByArticleId(int id);
+
+              Task<IEnumerable< Article>> GetAllArticles();
     }
 }

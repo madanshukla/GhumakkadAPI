@@ -73,5 +73,11 @@ namespace GhumakkadAPI.Service
             }
             return 0;
           }
+
+
+         public async Task<IEnumerable< Article>> GetAllArticles()
+         {
+            return await _ghumakkadContext.Articles.ToListAsync();
+         }
     }
 }

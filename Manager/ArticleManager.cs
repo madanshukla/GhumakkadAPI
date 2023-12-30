@@ -65,5 +65,10 @@ public async  Task<int> DeleteArticle(int id)
         {
             return await _articleService.EnableArticleByArticleId(id);
         }
+
+         public async Task<IEnumerable< Article>> GetAllArticles()
+         {
+            return await  _articleService.GetAllArticles();
+         }
     }
 }

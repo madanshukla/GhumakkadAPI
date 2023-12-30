@@ -54,10 +54,12 @@ namespace GhumakkadAPI.Controllers
             return Ok(await _articleManager.EnableArticleByArticleId(id));//Ok,NotFound,BadResult,BadRequest inbuilt classes implementing IactionResult Interface
         }
 
-        [HttpGet("SearchEmployee")]//Good Practice
-        public IActionResult SearchEmployee(int id)// Function never appears as Url
+        [HttpGet("GetAllArticles")]//Good Practice
+        public async Task<IActionResult> GetAllArticles()// Function never appears as Url
         {
-            return Ok();//Ok,NotFound,BadResult,BadRequest inbuilt classes implementing IactionResult Interface
+            //GetAllArticles
+              return Ok(await _articleManager.GetAllArticles());
+            //return Ok();//Ok,NotFound,BadResult,BadRequest inbuilt classes implementing IactionResult Interface
         }
     }
 }
